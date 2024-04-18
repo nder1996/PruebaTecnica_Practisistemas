@@ -1,0 +1,209 @@
+<style>
+    .marcoPrincipal {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        background-image: url('./assets/img/bg-1.png');
+        overflow: hidden !important;
+    }
+
+    .img-ico {
+        width: 150px;
+        height: 80px;
+        object-fit: contain;
+    }
+
+    .card {
+        padding: 1rem;
+        width: 480px;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    }
+
+    .card-title {
+        font-weight: 500;
+        color: #273A73 !important;
+        /*color: #273A73;*/
+    }
+
+    .card .col-12 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card .col-12 .nameInput {
+        font-weight: bold;
+        font-weight: 700;
+        text-align: start;
+        color: #273A73 !important;
+    }
+
+    mat-form-field {
+        border-radius: 10px !important;
+    }
+
+    .btn-login {
+        padding: 1.2rem !important;
+        width: 100%;
+        background-color: #03A66A !important;
+        color: white !important;
+        border-radius: 0.5rem !important;
+    }
+</style>
+
+<app-notificacion-message></app-notificacion-message>
+<div class="marcoPrincipal">
+    <div class="card card-login">
+        <form [formGroup]="formLogin">
+            <div class="container">
+                <div class="row">
+                    <img class="img-ico mx-auto" src="./assets/img/logoPracti.png" alt="">
+                    <h2 class="card-title text-center"> <strong>¡Bienvenido al sistema de recargas de
+                            PractiSistemas!</strong> </h2>
+                    <div class="col-12 mt-2">
+                        <label class="nameInput">Usuario</label>
+                        <mat-form-field class="example-full-width mt-1 mb-2">
+                            <input placeholder="Usuario" formControlName="username" matInput>
+                            <i class="fa-solid fa-user iconoInput fs-5" style="padding: 13px;" matSuffix></i>
+                            <mat-error *ngIf="formLogin.get('username')?.hasError('required')">Este campo es
+                                requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <label class="nameInput">Contraseña</label>
+                        <mat-form-field class="mt-1 mb-1">
+                            <input placeholder="Contraseña" formControlName="password" matInput
+                                [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <i class="{{ hide ? 'fas fa-eye' : 'fas fa-eye-slash' }} fs-5" matSuffix></i>
+                            </button>
+                            <mat-error *ngIf="formLogin.get('password')?.hasError('required')">Este campo es
+                                requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 mt-1">
+                        <button class="btn-login mt-2" mat-raised-button (click)="inicioSession()">Iniciar Sesión
+                            &nbsp;
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+<!--
+<style>
+    .marcoPrincipal {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        background-image: url('./assets/img/bg-1.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .img-ico{
+        width: 120px;
+        height: 80px;
+        object-fit: cover;
+    }
+
+    .container {
+     
+    }
+
+    .container .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+     
+    }
+
+    .card {
+        border-radius: 10px;
+        width: 500px;
+        padding: 0.6rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .from-div{
+  
+    }
+
+    .from-div form {
+        display: flex;
+        flex-direction: column;
+        padding: 1.7rem;
+      
+    }
+
+    .btn-login{
+        padding: 10px;
+        width: 200px !important;
+    }
+
+    .contenedor-acciones-form{
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<app-notificacion-message></app-notificacion-message>
+<div class="marcoPrincipal">
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <img class="img-ico mx-auto" src="./assets/img/login.png" alt="">
+                <h2 class="card-title text-center"> <strong>Bienvenido a PractiSistemas</strong> </h2>
+                <div class="col-12 from-div mt-2">
+                    <form [formGroup]="formLogin">
+                        <label>Usuario</label>
+                        <mat-form-field class="example-full-width mt-3 mb-2">
+                            <mat-label>Usuario</mat-label>
+                            <input formControlName="username" matInput>
+                            <i class="fa-solid fa-user iconoInput fs-5" style="padding: 13px;" matSuffix></i>
+                            <mat-error *ngIf="formLogin.get('username')?.hasError('required')">Este campo es requerido</mat-error>
+                        </mat-form-field>
+                        <label class="label-form">Contraseña</label>
+                        <mat-form-field class="mt-4 mb-2">
+                            <mat-label>Contraseña</mat-label>
+                            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <i class="{{ hide ? 'fas fa-eye' : 'fas fa-eye-slash' }} fs-5" matSuffix></i>
+                            </button>
+                            <mat-error *ngIf="formLogin.get('password')?.hasError('required')">Este campo es requerido</mat-error>
+                        </mat-form-field>
+                        <div class="contenedor-acciones-form">
+                            <button class="btn-login mt-2"  mat-raised-button (click)="inicioSession()">Iniciar Sesión 
+                                &nbsp; 
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </button>
+                            <span>
+                                <strong>Recordar contraseña?</strong>
+                            </span>
+                        </div>
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->

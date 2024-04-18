@@ -1,0 +1,122 @@
+<style>
+    .marcoPrincipal {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        background-image: url('./assets/img/bg-1.png');
+        overflow: hidden !important;
+
+    }
+
+    .card-recarga {
+        width: 450px;
+        padding: 0.5rem;
+        position: relative;
+        bottom: 1.5rem !important;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
+    }
+
+    .card-title {
+        font-weight: 700;
+        color: #273A73 !important;
+    }
+
+    .card-recarga form {
+        padding: 1rem;
+    }
+
+
+    .container-recarga .col-12 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-direction: column;
+        margin-bottom: 5px;
+    }
+
+    .container-recarga .col-12 label {
+        width: 100%;
+        text-align: start;
+        margin: 3px;
+    }
+
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    .btnRecargar {
+        padding: 1.2rem !important;
+        width: 100%;
+        background-color: #03A66A !important;
+        color: white !important;
+        border-radius: 0.5rem !important;
+    }
+
+
+    /*CUADRO DE PAIS*/
+</style>
+<app-navbar />
+<app-notificacion-message></app-notificacion-message>
+<div class="marcoPrincipal">
+    <div class="card card-recarga" style="overflow: hidden !important;">
+        <form [formGroup]="formRecarga">
+            <div class="container container-recarga">
+                <div class="row">
+                    <h2 class="card-title text-center"> <strong>¡Recarga tu teléfono al instante con
+                            PractiSistemas!</strong> </h2>
+                    <div class="col-12 mt-3">
+                        <mat-form-field>
+                            <input matInput placeholder="Seleccionar Operador" formControlName="operadorM"
+                                [matAutocomplete]="autoOperador" (blur)="validarAutoCompleteOperadorEventBlur($event)">
+                            <mat-autocomplete #autoOperador="matAutocomplete">
+                                <mat-option *ngFor="let operador of filtroOperador | async" [value]="operador">
+                                    {{ operador }}
+                                </mat-option>
+                                <mat-option [disabled]="true">
+                                    Total de Operadores: {{ (filtroOperador | async)?.length }}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <mat-error *ngIf="formRecarga.get('operadorM')?.hasError('required')">Este campo es
+                                requerido</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field class="example-full-width">
+                            <span matPrefix style="padding: 10px !important;">
+                                <img src="./assets/img/icoColombia.png" style="width: 24px; height: 24px;">
+                                +57
+                            </span>
+                            <input formControlName="numeroOperador" matInput placeholder="300-555-1234">
+                            <mat-error *ngIf="formRecarga.get('numeroOperador')?.hasError('required')">Este campo es
+                                requerido</mat-error>
+                            <mat-error *ngIf="formRecarga.get('numeroOperador')?.hasError('pattern')">Solo se permiten
+                                numeros</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12">
+                        <mat-form-field>
+                            <input placeholder="valor a recargar" formControlName="valorRecarga" type="text"
+                                pattern="[0-9]+" matInput>
+                            <mat-error *ngIf="formRecarga.get('valorRecarga')?.hasError('required')">Este campo es
+                                requerido</mat-error>
+                            <mat-error *ngIf="formRecarga.get('valorRecarga')?.hasError('pattern')">Solo se permiten
+                                números</mat-error>
+                            <mat-error *ngIf="formRecarga.get('valorRecarga')?.hasError('min')">El valor debe ser mayor
+                                o igual a 1</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <button class="btnRecargar" mat-raised-button color="accent"
+                            (click)="enviarRecarga()">Recargar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
