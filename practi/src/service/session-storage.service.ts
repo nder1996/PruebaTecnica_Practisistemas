@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
 
+
+
+/**
+ * Servicio encargado de gestionar el almacenamiento de datos de sesión en el navegador del usuario.
+ * Proporciona métodos para guardar, recuperar y eliminar datos de la sesión en el almacenamiento local del navegador.
+ * Este servicio se utiliza para mantener la persistencia de la sesión de usuario entre diferentes vistas o sesiones de la aplicación.
+ */
 @Injectable({
   providedIn: 'root'
 })

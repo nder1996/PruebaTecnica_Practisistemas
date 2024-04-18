@@ -1,3 +1,7 @@
+/**
+ * Modelo de datos para representar una recarga.
+ * Esta clase define la estructura de los datos relacionados con una recarga en la aplicación.
+ */
 export class RecargaModel {
     operador_id?: number;
     numero?: number;

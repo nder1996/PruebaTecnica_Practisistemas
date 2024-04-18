@@ -82,7 +82,7 @@ export class AppPrincipalComponent implements OnInit, AfterViewInit {
         this.listAutoCompleteOperador = data;
       }
     } catch (err) {
-      console.error('Error al obtener los operadores:', err);
+      this.notifacionMessage.openDialog('error', 'fa-solid fa-bug', 'Hubo un error al cargar la lista de operadores');
     }
   }
 

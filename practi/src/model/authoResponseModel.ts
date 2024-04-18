@@ -1,3 +1,7 @@
+/**
+ * Modelo de datos para representar la respuesta de autenticación.
+ * Esta clase define la estructura de los datos devueltos por un servicio de autenticación.
+ */
 export class AuthoResponseModel {
     access_token?: string;
     token_type?: string;

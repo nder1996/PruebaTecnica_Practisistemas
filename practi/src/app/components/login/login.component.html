@@ -8,6 +8,8 @@
         align-content: center;
         background-image: url('./assets/img/bg-1.png');
         overflow: hidden !important;
+
+
     }
 
     .img-ico {
@@ -51,8 +53,23 @@
         color: white !important;
         border-radius: 0.5rem !important;
     }
-</style>
 
+    /* Estilos para dispositivos móviles con un ancho máximo de 767px */
+    @media only screen and (max-width: 767px) {
+        .card-login {
+            width: 90% !important;
+        }
+    }
+
+    /* Estilos para dispositivos con un ancho mínimo de 768px y un máximo de 1024px (tablets) */
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        .card-login {
+            width: 580px;
+            margin: 0 auto;
+        }
+    }
+</style>
+<app-loading-spinner></app-loading-spinner>
 <app-notificacion-message></app-notificacion-message>
 <div class="marcoPrincipal">
     <div class="card card-login">
@@ -60,8 +77,10 @@
             <div class="container">
                 <div class="row">
                     <img class="img-ico mx-auto" src="./assets/img/logoPracti.png" alt="">
-                    <h2 class="card-title text-center"> <strong>¡Bienvenido al sistema de recargas de
-                            PractiSistemas!</strong> </h2>
+                    <h2 class="card-title text-center">
+                        <strong>¡Recarga tu teléfono fácilmente con PractiSistemas!</strong>
+                    </h2>
+                    
                     <div class="col-12 mt-2">
                         <label class="nameInput">Usuario</label>
                         <mat-form-field class="example-full-width mt-1 mb-2">

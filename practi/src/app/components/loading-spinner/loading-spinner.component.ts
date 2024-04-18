@@ -13,7 +13,7 @@ export class LoadingSpinnerComponent {
   }
 
 
-  public isSpinnerVisible:boolean = false;
+  public isSpinnerVisible: boolean = false;
 
   ngOnInit(): void {
     this.spinnerService.getSpinnerState().subscribe((state: boolean) => {
